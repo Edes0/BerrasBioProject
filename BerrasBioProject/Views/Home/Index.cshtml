@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BerrasBio.Models.Movies>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center Orange">
+    <h4>Welcome to</h4>
+    <h1 class="display-4">Berras Bio</h1>
+</div>
+
+<div class="slide-container">
+    <span id="slider-image-1"></span>
+    <span id="slider-image-2"></span>
+    <span id="slider-image-3"></span>
+
+
+    <div class="center image-container">
+        @for (var i = 0; i < 5; i++)
+        {
+            var movies = from movie in Model
+                         where movie.Id == i
+                         select movie;
+
+            @foreach (var movie in movies)
+            {
+                <a asp-controller="Movies" asp-action="Index" asp-route-id="@movie.Id">
+                <div class="Margin1 slider-image"><img src="@movie.CoverUrl"></div>
+                </a>
+            }
+        }
+    </div>
+
+    <div class="Orange a center button-container">
+        <a href="#slider-image-1" class="slider-button"><</a>
+        <a href="#slider-image-2" class="slider-button">0</a>
+        <a href="#slider-image-3" class="slider-button">></a>
+    </div>
+
+    <nav class="center">
+    <button type="button" class="Margin2 Padding btn btn-dark btn-lg Orange a"><a asp-controller="Shows" asp-action="index">Shows</a></button>
+</nav>
+</div>

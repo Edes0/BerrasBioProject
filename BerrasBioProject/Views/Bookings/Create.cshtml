@@ -1,0 +1,54 @@
+﻿@model BerrasBio.Models.Bookings
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="Orange">
+    <h1>Book</h1>
+
+</div>
+
+<hr />
+<div class="Orange row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ShowId" class="control-label"></label>
+                @Html.DisplayFor(c => c.Show.Movie.Title)
+                <span> - </span>
+                @Html.DisplayFor(c => c.Show.ShowTime)
+                |
+                <label asp-for="Show.Movie.Price" class="control-label"></label>
+                <span>: </span>
+                @Html.DisplayFor(c => c.Show.Movie.Price)
+                |
+                Seats taken: @Html.DisplayFor(c => c.Show.SeatsTaken) / @Html.DisplayFor(c => c.Show.Salon.Seats)
+
+            </div>
+            <div class="form-group">
+                <label asp-for="NumOfSeats" class="control-label"></label>
+                <input asp-for="NumOfSeats" value="1" class="form-control" />
+                <span asp-validation-for="NumOfSeats"  class="text-danger"></span>
+                @*Changed from value="@Model.ShowId" -->ShowId*@
+                <input asp-for="ShowId" value="@Model.ShowId" class="form-control" hidden />
+
+                <span class="text-danger">There are not enough tickets</span>
+
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

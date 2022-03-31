@@ -1,0 +1,50 @@
+﻿@model BerrasBio.Models.Movies
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="Orange">@Html.DisplayFor(modelItem => Model.Title)</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="Orange table">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => Model.CoverUrl)">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Price)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                <a asp-action="Details" asp-route-id="@Model.Id">Details</a>
+                <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+﻿@model BerrasBio.Models.Movies
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class ="Orange">@Html.DisplayFor(modelItem => Model.Title)</h1>
+
+<div class="Orange">
+    <h4 class ="Orange">Movies</h4> 
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Html.DisplayFor(model => model.CoverUrl)">
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

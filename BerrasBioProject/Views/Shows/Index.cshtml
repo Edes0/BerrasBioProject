@@ -1,0 +1,149 @@
+﻿@model IEnumerable<BerrasBio.Models.Shows>
+
+@{
+    ViewData["Title"] = "Shows";
+}
+<div class="text-center Orange">
+    <h1>Shows</h1>
+</div>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="Orange table">
+    <thead>
+        <tr>
+            <th>
+                <h3>Forest</h3>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salon.Seats)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+
+            @if (item.Salon.Name == "Forest")
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Movies" asp-action="Index" asp-route-id="@item.MovieId">
+                            <img class="w-25" src="@Html.DisplayFor(modelItem => item.Movie.CoverUrl)">
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShowTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Movie.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SeatsTaken)
+                        /
+                        @Html.DisplayFor(modelItem => item.Salon.Seats)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><button type="button" class="btn btn-danger">Edit</button></a> |
+                        <a asp-action="Details" asp-route-id="@item.Id"><button type="button" class="btn btn-danger">Details</button></a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id"><button type="button" class="btn btn-danger">Delete</button></a> |
+                        @{
+                            if (item.SeatsTaken == 100)
+                            {
+                                <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button>
+                            }
+                            else
+                            {
+                                <a asp-controller="Bookings" asp-action="Create" asp-route-id="@item.Id"><button type="button" class="btn btn-danger">Book</button></a>
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<table class="Orange table">
+    <thead>
+        <tr>
+            <th>
+                <h3>Ocean</h3>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salon.Seats)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+
+            @if (item.Salon.Name == "Ocean")
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Movies" asp-action="Index" asp-route-id="@item.MovieId">
+                            <img class="w-25" src="@Html.DisplayFor(modelItem => item.Movie.CoverUrl)">
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShowTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Movie.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SeatsTaken)
+                        /
+                        @Html.DisplayFor(modelItem => item.Salon.Seats)
+                    </td>
+                    <td>
+
+                        <a asp-action="Edit" asp-route-id="@item.Id"><button type="button" class="btn btn-danger">Edit</button></a> |
+                        <a asp-action="Details" asp-route-id="@item.Id"><button type="button" class="btn btn-danger">Details</button></a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id"><button type="button" class="btn btn-danger">Delete</button></a> |
+                        @{
+                            if (item.SeatsTaken == 100)
+                            {
+                                <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button>
+                            }
+                            else
+                            {
+                                <a asp-controller="Bookings" asp-action="Create" asp-route-id="@item.Id"><button type="button" class="btn btn-danger">Book</button></a>
+                            }   
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

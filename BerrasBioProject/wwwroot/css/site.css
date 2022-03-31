@@ -1,0 +1,83 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Orange {
+    color: orangered;
+}
+
+.Orange a {
+    color: orangered;
+    text-decoration: none;
+}
+
+.Padding {
+    padding: 2em;
+}
+.Margin2 {
+    margin: 2em;
+}
+
+.Margin1 {
+    margin: 1em;
+}
+
+img:hover {
+    opacity: 0.5;
+}
+
+.image-container {
+    position: relative;
+    transition: left 2s;
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+}
+
+.slider-image {
+    float: left;
+}
+
+.button-container {
+    top: -20px;
+    position: relative;
+}
+
+.slider-button {
+    display: inline-block;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+  background-color: black;
+}
+
+#slider-image-1:target ~ .image-container {
+    left: -300px;
+}
+#slider-image-2:target ~ .image-container {
+    left: 0px;
+}
+#slider-image-3:target ~ .image-container {
+    left: 300px;
+}
