@@ -67,10 +67,18 @@ namespace BerrasBioProject.Controllers
             {
                 var show = _context.Shows
                     .Include(s => s.Movie)
-                    .Single(Show => Show.Id == bookings.ShowId);
+                    .Include(s => s.Salon)
+                       .Single(Show => Show.Id == bookings.ShowId);
+
+                if (bookings.NumOfSeats > show.Salon.Seats - show.SeatsTaken)
+                {
+                    return RedirectToAction("Error", "Bookings");
+                }
 
                 bookings.Total = show.Movie.Price * bookings.NumOfSeats;
                 show.SeatsTaken += bookings.NumOfSeats;
+
+
 
                 _context.Add(bookings);
                 await _context.SaveChangesAsync();
