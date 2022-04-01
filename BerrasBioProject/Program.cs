@@ -31,3 +31,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}");
 
 app.Run();
+
+
+// TODO: Sort function in show
+// TODO: Cannot book more than existing spots in show

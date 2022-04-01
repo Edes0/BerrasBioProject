@@ -44,7 +44,7 @@ namespace BerrasBioProject.Controllers
         // GET: Bookings/Create
         public async Task<IActionResult> Create(int id)
         {
-            Bookings booking = new();
+            Bookings booking = new Bookings();
 
             booking = await _context.Bookings
                 .Include(b => b.Show)
