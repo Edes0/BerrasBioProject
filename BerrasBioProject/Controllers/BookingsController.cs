@@ -33,7 +33,7 @@ namespace BerrasBioProject.Controllers
         // GET: Bookings/Details/5
         public async Task<IActionResult> Details(int id)
         {
- 
+
             var bookings = await _context.Bookings
                 .Include(b => b.Show)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -42,9 +42,11 @@ namespace BerrasBioProject.Controllers
         }
 
         // GET: Bookings/Create
-        public async Task<IActionResult> Create(int id) // HÄR ÄR PROBLEMET TROR JAG
+        public async Task<IActionResult> Create(int id)
         {
-            var bookings = _context.Bookings
+            Bookings booking = new();
+
+            booking = await _context.Bookings
                 .Include(b => b.Show)
                 .ThenInclude(s => s.Movie)
                 .Include(b => b.Show)
@@ -52,7 +54,7 @@ namespace BerrasBioProject.Controllers
                 .Include(b => b.Show)
                 .FirstOrDefaultAsync(b => b.Show.Id == id);
 
-                return View(await bookings);
+            return View(booking);
         }
         // POST: Bookings/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.

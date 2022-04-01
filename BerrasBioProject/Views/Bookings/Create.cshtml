@@ -32,7 +32,6 @@
                 <label asp-for="NumOfSeats" class="control-label"></label>
                 <input asp-for="NumOfSeats" value="1" class="form-control" />
                 <span asp-validation-for="NumOfSeats"  class="text-danger"></span>
-                @*Changed from value="@Model.ShowId" -->ShowId*@
                 <input asp-for="ShowId" value="@Model.ShowId" class="form-control" hidden />
 
                 <span class="text-danger">There are not enough tickets</span>
